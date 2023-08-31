@@ -21,9 +21,7 @@
 				</view>
 				<text>拍照识别</text>
 				
-				<view class="media">
-					<image class="img" :src="img" mode="aspectFill"/>
-				</view>
+				
 			</view>
 		</view>
 		
@@ -34,7 +32,7 @@
 	export default {
 		data() {
 			return {
-				img:null
+				
 			}
 		},
 		onLoad() {
@@ -43,16 +41,9 @@
 		methods: {
 			takePhoto(){
 				console.log('拍照');
-				
-				uni.chooseImage({
-					count: 1, //1张照片
-					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['album','camera'], //从相册选择或拍照
-					success: res => {
-						this.img = res.tempFilePaths
-						// console.log(this.img);
-					}
-				});
+				uni.navigateTo({
+					url:'/pages/res/res'
+				})
 			}
 		}
 	}

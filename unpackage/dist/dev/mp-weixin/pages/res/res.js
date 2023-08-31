@@ -100,8 +100,11 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    Food: function () {
-      return __webpack_require__.e(/*! import() | components/Food/Food */ "components/Food/Food").then(__webpack_require__.bind(null, /*! @/components/Food/Food.vue */ 50))
+    Photo: function () {
+      return __webpack_require__.e(/*! import() | components/Photo/Photo */ "components/Photo/Photo").then(__webpack_require__.bind(null, /*! @/components/Photo/Photo.vue */ 50))
+    },
+    Foods: function () {
+      return __webpack_require__.e(/*! import() | components/Foods/Foods */ "components/Foods/Foods").then(__webpack_require__.bind(null, /*! @/components/Foods/Foods.vue */ 57))
     },
   }
 } catch (e) {
@@ -158,7 +161,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -171,21 +174,49 @@ exports.default = void 0;
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 var _default = {
   data: function data() {
-    return {};
+    return {
+      imgPath: "../../static/images/chinese-food.png",
+      // api返回的数据
+      foodData: {}
+    };
   },
-  methods: {},
-  onLoad: function onLoad() {}
+  methods: {
+    /* 拍照 */takePhoto: function takePhoto() {
+      var _this = this;
+      uni.chooseImage({
+        count: 1,
+        sizeType: ['original', 'compressed'],
+        sourceType: ['album', 'camera'],
+        success: function success(res) {
+          _this.imgPath = res.tempFilePaths[0];
+          // console.log(this.imgPath);
+        }
+      });
+    },
+    /* 请求api获取数据 */getData: function getData() {
+      var _this2 = this;
+      uni.uploadFile({
+        url: "http://127.0.0.1:5000/predict",
+        name: 'image',
+        filePath: this.imgPath,
+        // formData: { },//传参，数据+随机码
+        success: function success(res) {
+          var obj = JSON.parse(res.data);
+          // console.log(obj);
+          delete obj.img;
+          _this2.foodData = obj;
+        }
+      });
+    }
+  },
+  onLoad: function onLoad() {
+    this.takePhoto();
+  }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

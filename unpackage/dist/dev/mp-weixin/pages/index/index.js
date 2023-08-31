@@ -171,30 +171,16 @@ exports.default = void 0;
 //
 //
 //
-//
-//
 var _default = {
   data: function data() {
-    return {
-      img: null
-    };
+    return {};
   },
   onLoad: function onLoad() {},
   methods: {
     takePhoto: function takePhoto() {
-      var _this = this;
       console.log('拍照');
-      uni.chooseImage({
-        count: 1,
-        //1张照片
-        sizeType: ['original', 'compressed'],
-        //可以指定是原图还是压缩图，默认二者都有
-        sourceType: ['album', 'camera'],
-        //从相册选择或拍照
-        success: function success(res) {
-          _this.img = res.tempFilePaths;
-          // console.log(this.img);
-        }
+      uni.navigateTo({
+        url: '/pages/res/res'
       });
     }
   }

@@ -24,8 +24,15 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.container.data-v-ddcd5470 {
+.picShow.data-v-5de9036a {
   width: 100%;
-  height: 100vh;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.picShow image.data-v-5de9036a {
+  width: 100%;
+  opacity: 0.8;
 }
 

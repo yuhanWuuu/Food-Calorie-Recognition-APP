@@ -1,1 +1,1 @@
-<view class="foodItem data-v-40d24544"><view class="pic data-v-40d24544"><image src="../../static/images/啤酒.png" mode="widthFix" class="data-v-40d24544"></image></view><view class="text data-v-40d24544">啤酒</view><view class="calorie data-v-40d24544">43.4kcal/100g</view></view>
+<view class="foodItem data-v-40d24544"><view class="pic data-v-40d24544"><image src="{{imgPath}}" mode="aspectFill" class="data-v-40d24544"></image></view><view class="text data-v-40d24544">{{kind}}</view><view class="calorie data-v-40d24544">{{calorie+"kcal/100g"}}</view></view>

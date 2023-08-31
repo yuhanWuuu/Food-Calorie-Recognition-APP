@@ -1,14 +1,7 @@
 <template>
 	<view class="container">
-		<view class="picShow">
-			<image src="../../static/images/chinese-food.png" mode="widthFix"></image>
-		</view>
-		<scroll-view class="resShow" scroll-y="">
-			<view class="text">图中可能包含的高热量食物</view>
-			<view class="foodList" v-for="item in 3">
-				<Food></Food>
-			</view>
-		</scroll-view>
+		<Photo :img="imgPath"></Photo>
+		<Foods :kind="foodData.kind" :calorie="foodData.calorie"></Foods>
 	</view>
 </template>
 
@@ -16,14 +9,44 @@
 	export default {
 		data() {
 			return {
-				
+				imgPath: "../../static/images/chinese-food.png",
+				// api返回的数据
+				foodData:{}
 			}
 		},
 		methods: {
-			
+			/* 拍照 */
+			takePhoto(){
+				uni.chooseImage({
+					count: 1,
+					sizeType: ['original', 'compressed'],
+					sourceType: ['album','camera'],
+					success: res => {
+						this.imgPath = res.tempFilePaths[0]
+						// console.log(this.imgPath);
+					}
+				});
+			},
+			/* 请求api获取数据 */
+			getData(){
+				uni.uploadFile({
+					url: "http://127.0.0.1:5000/predict",
+					name: 'image',
+					filePath: this.imgPath,
+					// formData: { },//传参，数据+随机码
+					success:(res)=>{
+						const obj = JSON.parse(res.data)
+						// console.log(obj);
+						delete obj.img;
+						this.foodData = obj
+						
+					}
+				})
+				
+			}
 		},
 		onLoad() {
-			
+			this.takePhoto()
 		}
 	}
 </script>
@@ -32,46 +55,6 @@
 	.container{
 		width: 100%;
 		height: 100vh;
-		.picShow{
-			width: 100%;
-			height: 40%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			// background: aqua;
-			image{
-				width: 100%;
-				// height: 100%;
-				opacity: 0.8;
-			}
-			
-		}
-		.resShow{
-			width: 100%;
-			height: 60%;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			background: #efefef;
-			z-index: 10;
-			// visibility: hidden;
-			.text{
-				// position: fixed;
-				text-align: center;
-				width: 100%;
-				font-size: 40rpx;
-				padding: 25rpx;
-				background: #efefef;
-			}
-			.foodList{
-				width: 100%;
-				background: #efefef;
-				border-bottom: 2px dashed #d3d3d3;
-				
-			}
-		}
 	}
-	
 	
 </style>

@@ -104,16 +104,29 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var g0 = _vm.kind.length
-  var g1 = _vm.kind.length
-  var g2 = _vm.kind.length
+  var g0 = _vm.foodData.length
+  var l0 = _vm.__map(_vm.foodData, function (item, __i0__) {
+    var $orig = _vm.__get_orig(item)
+    var g1 = Object.values(item)
+    var g2 = Object.keys(item)
+    var g3 = Object.values(item)
+    return {
+      $orig: $orig,
+      g1: g1,
+      g2: g2,
+      g3: g3,
+    }
+  })
+  var g4 = _vm.foodData.length
+  var g5 = _vm.foodData.length
   _vm.$mp.data = Object.assign(
     {},
     {
       $root: {
         g0: g0,
-        g1: g1,
-        g2: g2,
+        l0: l0,
+        g4: g4,
+        g5: g5,
       },
     }
   )
@@ -175,11 +188,7 @@ exports.default = void 0;
 var _default = {
   name: "Foods",
   props: {
-    kind: {
-      type: Array,
-      required: true
-    },
-    calorie: {
+    foodData: {
       type: Array,
       required: true
     }

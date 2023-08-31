@@ -1,14 +1,14 @@
 <template>
 	<scroll-view class="resShow" scroll-y="">
-		<view class="text" v-if="kind.length">图中可能包含的高热量食物</view>
-		<view class="foodList" v-for="i in kind.length" :key="calorie[i]">
-			<Food :kind="kind[i]" :calorie="calorie[i]"></Food>
+		<view class="text" v-if="foodData.length">图中可能包含的高热量食物</view>
+		<view class="foodList" v-for="item in foodData" :key="Object.values(item)[0]">
+			<Food :kind="Object.keys(item)[0]" :calorie="Object.values(item)[0]"></Food>
 		</view>
 		
-		<button class="text" v-if="!kind.length" @click="selectPic">
+		<button class="text" v-if="!foodData.length" @click="selectPic">
 			选择图片
 		</button>
-		<button class="text" v-if="!kind.length" @click="getData">
+		<button class="text" v-if="!foodData.length" @click="getData">
 			CanCanNeed
 		</button>
 	</scroll-view>
@@ -18,14 +18,11 @@
 	export default {
 		name:"Foods",
 		props:{
-			kind:{
+			foodData:{
 				type:Array,
 				required:true
 			},
-			calorie:{
-				type:Array,
-				required:true
-			},
+			
 		},
 		methods:{
 			selectPic(){

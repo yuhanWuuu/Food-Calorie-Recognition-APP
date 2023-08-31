@@ -179,7 +179,7 @@ var _default = {
     return {
       imgPath: "../../static/images/chinese-food.png",
       // api返回的数据
-      foodData: {}
+      foodData: []
     };
   },
   methods: {
@@ -204,8 +204,7 @@ var _default = {
         // formData: { },//传参，数据+随机码
         success: function success(res) {
           var obj = JSON.parse(res.data);
-          // console.log(obj);
-          delete obj.img;
+          console.log(obj);
           _this2.foodData = obj;
         }
       });

@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<Photo :img="imgPath"></Photo>
-		<Foods :kind="foodData.kind" :calorie="foodData.calorie"></Foods>
+		<Foods :foodData="foodData"></Foods>
 	</view>
 </template>
 
@@ -11,7 +11,7 @@
 			return {
 				imgPath: "../../static/images/chinese-food.png",
 				// api返回的数据
-				foodData:{}
+				foodData:[]
 			}
 		},
 		methods: {
@@ -36,8 +36,7 @@
 					// formData: { },//传参，数据+随机码
 					success:(res)=>{
 						const obj = JSON.parse(res.data)
-						// console.log(obj);
-						delete obj.img;
+						console.log(obj);
 						this.foodData = obj
 						
 					}

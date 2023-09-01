@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<!-- 背景图片 -->
-		<cover-image src="../../static/images/background.jpg"></cover-image>
+		<!-- <cover-image src="../../static/images/background.jpg"></cover-image> -->
 		
 		<!-- 内容部分 -->
 		<view class="content">
@@ -52,10 +52,11 @@
 <style lang="scss" scoped>
 	
 	/* 全屏背景 */
-	cover-image {
-		width: 100%;
-		height: 100vh;
-	}
+	// cover-image {
+	// 	width: 100%;
+	// 	height: 100vh;
+	// 	z-index: -1;
+	// }
 	
 	.content{
 		position: absolute;

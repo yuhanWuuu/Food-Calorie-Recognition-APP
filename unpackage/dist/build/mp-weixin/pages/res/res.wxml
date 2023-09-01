@@ -1,0 +1,1 @@
+<view class="container data-v-517b8092"><photo vue-id="dbdc3784-1" img="{{imgPath}}" class="data-v-517b8092" bind:__l="__l"></photo><foods vue-id="dbdc3784-2" foodData="{{foodData}}" class="data-v-517b8092" bind:__l="__l"></foods></view>

@@ -29,7 +29,7 @@
 		// justify-content: left;
 		align-items: center;
 		.pic{
-			border: 2px solid black;
+			// border: 2px solid black;
 			width: 100rpx;
 			height: 100rpx;
 			padding: 10rpx;
@@ -40,14 +40,15 @@
 			}
 		}
 		.text{
+			flex: 1;
 			width: 150rpx;
-			border: 2px solid black;
+			// border: 2px solid black;
 			font-size: 36rpx;
-			margin-left: 60rpx;
-			margin-right: 120rpx;
+			margin-left: 80rpx;
+			margin-right: 80rpx;
 		}
 		.calorie{
-			border: 2px solid black;
+			// border: 2px solid black;
 			font-size: 34rpx;
 			margin-right: 30rpx;
 		}

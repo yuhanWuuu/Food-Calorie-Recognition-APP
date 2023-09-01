@@ -45,7 +45,7 @@ component.options.__file = "components/Food/Food.vue"
 /*!****************************************************************************************************************!*\
   !*** D:/Programming/WeChatProjects/食物热量识别/components/Food/Food.vue?vue&type=template&id=40d24544&scoped=true& ***!
   \****************************************************************************************************************/
-/*! no static exports found */
+/*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

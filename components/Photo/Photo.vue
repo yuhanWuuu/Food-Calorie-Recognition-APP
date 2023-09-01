@@ -1,6 +1,6 @@
 <template>
 	<view class="picShow">
-		<image :src="img" mode="widthFix"></image>
+		<image :src="img" mode="aspectFit"></image>
 	</view>
 </template>
 

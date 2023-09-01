@@ -206,6 +206,9 @@ var _default = {
           var obj = JSON.parse(res.data);
           console.log(obj);
           _this2.foodData = obj;
+          uni.setNavigationBarTitle({
+            title: '识别结果'
+          });
         }
       });
     }

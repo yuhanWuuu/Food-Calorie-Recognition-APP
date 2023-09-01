@@ -117,8 +117,9 @@ var render = function () {
       g3: g3,
     }
   })
-  var g4 = _vm.foodData.length
-  var g5 = _vm.foodData.length
+  var g4 = !_vm.foodData.length && !_vm.isSearching
+  var g5 = !_vm.foodData.length && !_vm.isSearching
+  var g6 = _vm.isSearching && !_vm.foodData.length
   _vm.$mp.data = Object.assign(
     {},
     {
@@ -127,6 +128,7 @@ var render = function () {
         l0: l0,
         g4: g4,
         g5: g5,
+        g6: g6,
       },
     }
   )
@@ -185,8 +187,16 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
 var _default = {
   name: "Foods",
+  data: function data() {
+    return {
+      isSearching: false
+    };
+  },
   props: {
     foodData: {
       type: Array,
@@ -198,8 +208,12 @@ var _default = {
       this.$parent.takePhoto();
     },
     getData: function getData() {
+      this.isSearching = true;
       this.$parent.getData();
     }
+  },
+  onShow: function onShow() {
+    this.isSearching = false;
   }
 };
 exports.default = _default;

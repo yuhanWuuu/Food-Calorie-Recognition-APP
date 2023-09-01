@@ -38,8 +38,11 @@
 						const obj = JSON.parse(res.data)
 						console.log(obj);
 						this.foodData = obj
-						
+						uni.setNavigationBarTitle({
+							title:'识别结果'
+						})
 					}
+					
 				})
 				
 			}

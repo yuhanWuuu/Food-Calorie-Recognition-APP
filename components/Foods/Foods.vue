@@ -5,18 +5,26 @@
 			<Food :kind="Object.keys(item)[0]" :calorie="Object.values(item)[0]"></Food>
 		</view>
 		
-		<button class="text" v-if="!foodData.length" @click="selectPic">
+		<button class="text" v-if="!foodData.length && !isSearching" @click="selectPic">
 			选择图片
 		</button>
-		<button class="text" v-if="!foodData.length" @click="getData">
+		<button class="text" v-if="!foodData.length && !isSearching" @click="getData">
 			CanCanNeed
 		</button>
+		<view class="text" v-if="isSearching && !foodData.length">
+			加载中......
+		</view>
 	</scroll-view>
 </template>
 
 <script>
 	export default {
 		name:"Foods",
+		data(){
+			return{
+				isSearching:false
+			}
+		},
 		props:{
 			foodData:{
 				type:Array,
@@ -29,8 +37,13 @@
 					this.$parent.takePhoto()
 			},
 			getData(){
+				this.isSearching = true
 				this.$parent.getData()
+				
 			}
+		},
+		onShow() {
+			this.isSearching = false
 		}
 		
 	}

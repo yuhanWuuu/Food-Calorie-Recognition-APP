@@ -1,1 +1,1 @@
-<view class="picShow data-v-5de9036a"><image src="{{img}}" mode="widthFix" class="data-v-5de9036a"></image></view>
+<view class="picShow data-v-5de9036a"><image src="{{img}}" mode="aspectFit" class="data-v-5de9036a"></image></view>

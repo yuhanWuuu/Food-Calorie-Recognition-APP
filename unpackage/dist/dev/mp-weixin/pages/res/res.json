@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "检测结果",
+  "navigationBarTitleText": "选择图片",
   "enablePullDownRefresh": false,
   "usingComponents": {
     "photo": "/components/Photo/Photo",

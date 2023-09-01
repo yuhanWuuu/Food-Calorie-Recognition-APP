@@ -165,17 +165,7 @@ exports.default = void 0;
 //
 //
 //
-//
-//
-//
-//
-//
-//
 var _default = {
-  data: function data() {
-    return {};
-  },
-  onLoad: function onLoad() {},
   methods: {
     takePhoto: function takePhoto() {
       console.log('拍照');

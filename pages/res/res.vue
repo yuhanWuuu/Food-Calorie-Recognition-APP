@@ -1,6 +1,8 @@
 <template>
 	<view class="container">
+		<!-- 识别的图片 -->
 		<Photo :img="imgPath"></Photo>
+		<!-- 识别结果 -->
 		<Foods :foodData="foodData"></Foods>
 	</view>
 </template>
@@ -9,6 +11,7 @@
 	export default {
 		data() {
 			return {
+				// 默认图片
 				imgPath: "../../static/images/chinese-food.png",
 				// api返回的数据
 				foodData:[]
@@ -30,7 +33,7 @@
 			/* 请求api获取数据 */
 			getData(){
 				uni.uploadFile({
-					url: "http://127.0.0.1:5000/predict",
+					url: "http://192.168.1.102:5000/predict",
 					name: 'image',
 					filePath: this.imgPath,
 					// formData: { },//传参，数据+随机码

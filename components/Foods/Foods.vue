@@ -8,7 +8,7 @@
 		<button class="text" v-if="!foodData.length && !isSearching" @click="selectPic">
 			选择图片
 		</button>
-		<button class="text" v-if="!foodData.length && !isSearching" @click="getData"">
+		<button class="text" v-if="!foodData.length && !isSearching" @click="getData">
 			CanCanNeed
 		</button>
 		<view class="text" v-if="isSearching && !foodData.length">

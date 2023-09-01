@@ -174,9 +174,12 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
   data: function data() {
     return {
+      // 默认图片
       imgPath: "../../static/images/chinese-food.png",
       // api返回的数据
       foodData: []
@@ -198,7 +201,7 @@ var _default = {
     /* 请求api获取数据 */getData: function getData() {
       var _this2 = this;
       uni.uploadFile({
-        url: "http://127.0.0.1:5000/predict",
+        url: "http://192.168.1.102:5000/predict",
         name: 'image',
         filePath: this.imgPath,
         // formData: { },//传参，数据+随机码

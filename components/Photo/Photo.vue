@@ -1,6 +1,8 @@
+<!-- 识别的图片 -->
 <template>
 	<view class="picShow">
-		<image :src="img" mode="aspectFit"></image>
+		<image :src="img" mode="aspectFit" ></image>
+		<!-- <image :src="'data:image/png;base64,' + imgData" mode="aspectFit"></image> -->
 	</view>
 </template>
 
@@ -9,16 +11,13 @@
 		name:"Photo",
 		props:{
 			// 用户上传的图片暂存地址
-			img:{
+			// 用户上传的图片字节形式
+			img: { 
 				type: String,
 				required:true
 				
 			}
 		},
-		
-		onLoad() {
-			console.log('@@@', this.img);
-		}
 	}
 </script>
 
@@ -35,6 +34,6 @@
 			// height: 100%;
 			opacity: 0.8;
 		}
-		
 	}
+
 </style>

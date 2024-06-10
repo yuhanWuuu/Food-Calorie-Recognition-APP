@@ -10,7 +10,7 @@
 				</image>
 			</view>
 
-			<!-- 拍照按钮 -->
+			<!-- 拍照按钮（大圆套小圆） -->
 			<view class="photo">
 				<view class="btn_outer" @click="takePhoto">
 					<view class="btn_inner"></view>
@@ -26,7 +26,7 @@
 	export default {
 		methods: {
 			takePhoto(){
-				console.log('拍照');
+				// console.log('拍照');
 				uni.navigateTo({
 					url:'/pages/res/res'
 				})
@@ -71,7 +71,7 @@
 			font-size: 30rpx
 		}
 	}
-	
+	 
 	
 	/* 拍照按钮区 */
 	.btn_outer{

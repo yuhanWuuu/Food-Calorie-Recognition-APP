@@ -41,6 +41,12 @@
   padding: 25rpx;
   background: #efefef;
 }
+.resShow .text.info {
+  position: fixed;
+}
+.resShow .placeholder {
+  height: 100rpx;
+}
 .resShow .foodList {
   width: 100%;
   background: #efefef;

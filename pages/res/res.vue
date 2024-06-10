@@ -3,7 +3,8 @@
 		<!-- 识别的图片 -->
 		<Photo :img="imgPath"></Photo>
 		<!-- 识别结果 -->
-		<Foods :foodData="foodData"></Foods>
+		<Foods :foodData="foodData" :isNone="isNone"></Foods>
+		
 	</view>
 </template>
 
@@ -14,7 +15,8 @@
 				// 默认图片
 				imgPath: "../../static/images/chinese-food.png",
 				// api返回的数据
-				foodData:[]
+				foodData:[],
+				isNone: false
 			}
 		},
 		methods: {
@@ -32,15 +34,43 @@
 			},
 			/* 请求api获取数据 */
 			getData(){
+				// 需要选择图片
+				// if(this.imgPath == "../../static/images/chinese-food.png"){
+				// 	console.log('请选择图片');
+				// 	// return;
+				// 	this.$refs.uToast.show({
+				// 		type: 'error',
+				// 		message: '请选择图片'
+				// 	});
+				// 	throw Error();
+				// }
 				uni.uploadFile({
-					url: "http://192.168.1.102:5000/predict",
+					url: "https://han-whye.top/api/predict/",
 					name: 'image',
 					filePath: this.imgPath,
-					// formData: { },//传参，数据+随机码
 					success:(res)=>{
+						// console.log(res.data) //string
 						const obj = JSON.parse(res.data)
-						console.log(obj);
-						this.foodData = obj
+						
+						var food_dict = obj.dict_res
+						console.log(food_dict)
+						var tmpfoodData = []
+						for (let food in food_dict) {
+						    let name = food;
+							// console.log('name',name);
+						    let calory = parseFloat(food_dict[food][0].calory);
+							// console.log('calory',calory);
+						    let heat = food_dict[food][1];
+							console.log('heat',heat);
+						    let entry = { [name]: [calory,heat] };
+						    tmpfoodData.push(entry);
+						}
+						if(!tmpfoodData.length){
+							this.isNone = true
+						}
+						console.log('tmpfoodData',tmpfoodData);
+						this.foodData = tmpfoodData
+						this.imgPath = "data:image/png;base64," + obj.image
 						uni.setNavigationBarTitle({
 							title:'识别结果'
 						})
@@ -63,3 +93,4 @@
 	}
 	
 </style>
+

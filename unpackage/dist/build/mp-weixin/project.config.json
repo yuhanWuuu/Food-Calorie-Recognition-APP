@@ -8,7 +8,7 @@
         "urlCheck": false,
         "es6": false,
         "postcss": false,
-        "minified": false,
+        "minified": true,
         "newFeature": true,
         "bigPackageSizeSupport": true,
         "babelSetting": {
@@ -18,7 +18,7 @@
         }
     },
     "compileType": "miniprogram",
-    "libVersion": "3.0.1",
+    "libVersion": "3.0.2",
     "appid": "wx5a28dc9980c7a6bd",
     "projectname": "食物热量识别",
     "condition": {},

@@ -1,1 +1,1 @@
-<view class="foodItem data-v-97ec6442"><view class="pic data-v-97ec6442"><image src="{{imgPath}}" mode="aspectFill" class="data-v-97ec6442"></image></view><view class="text data-v-97ec6442">{{kind}}</view><view class="calorie data-v-97ec6442">{{calorie+"kcal/100g"}}</view></view>
+<view class="foodItem data-v-15ecf66a"><view class="pic data-v-15ecf66a"><image src="{{imgPath}}" mode="aspectFill" class="data-v-15ecf66a"></image></view><view class="text data-v-15ecf66a">{{kind}}</view><view class="calorie data-v-15ecf66a">{{calorie+"kcal/100g"}}</view></view>

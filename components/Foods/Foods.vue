@@ -1,18 +1,27 @@
+<!-- 识别结果 -->
 <template>
 	<scroll-view class="resShow" scroll-y="">
-		<view class="text" v-if="foodData.length">图中可能包含的高热量食物</view>
+		<!-- 固定标题 -->
+		<view class="text info" v-if="foodData.length">识别到以下食物...</view>
+		<!-- 占位符，固定标题以后的margin -->
+		<view class="placeholder" v-if="foodData.length"></view>
+		<!-- 图中所含的食物 -->
 		<view class="foodList" v-for="item in foodData" :key="Object.values(item)[0]">
-			<Food :kind="Object.keys(item)[0]" :calorie="Object.values(item)[0]"></Food>
+			<Food :kind="Object.keys(item)[0]" :calorie="Object.values(item)[0][0]" :heat="Object.values(item)[0][1]"></Food>
 		</view>
 		
+		<!-- 一些提示信息 -->
 		<button class="text" v-if="!foodData.length && !isSearching" @click="selectPic">
 			选择图片
 		</button>
 		<button class="text" v-if="!foodData.length && !isSearching" @click="getData">
 			CanCanNeed
 		</button>
-		<view class="text" v-if="isSearching && !foodData.length">
+		<view class="text" v-if="isSearching && !foodData.length && !isNone">
 			加载中......
+		</view>
+		<view class="text" v-if="isNone">
+			啥也妹有！
 		</view>
 	</scroll-view>
 </template>
@@ -22,14 +31,19 @@
 		name:"Foods",
 		data(){
 			return{
-				isSearching:false
-			}
+				isSearching: false,
+			} 
 		},
 		props:{
 			foodData:{
-				type:Array,
-				required:true
+				type: Array,
+				required: true
 			},
+			isNone:{
+				type: Boolean,
+				required: true,
+				default: false
+			}
 			
 		},
 		methods:{
@@ -39,7 +53,6 @@
 			getData(){
 				this.isSearching = true
 				this.$parent.getData()
-				
 			}
 		},
 		onShow() {
@@ -59,14 +72,20 @@
 		align-items: center;
 		background: #efefef;
 		z-index: 10;
-		// visibility: hidden;
 		.text{
-			// position: fixed;
 			text-align: center;
 			width: 100%;
 			font-size: 40rpx;
 			padding: 25rpx;
 			background: #efefef;
+			&.info{
+				position: fixed;
+				// visibility: hidden;
+			}
+		}
+		.placeholder{
+			height: 100rpx;
+			// border: 2px solid red;
 		}
 		.foodList{
 			width: 100%;
